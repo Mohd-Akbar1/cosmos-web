@@ -5,7 +5,7 @@ import CommPage from "./community/Community";
 import Main from "../app/main/Main";
 import GalaxyBackground from "./Galaxy/Galaxy";   
 import 'animate.css';
-
+import Economy from "./economy/Economy"
 import Inter from "./Interchain/Inter"
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
       <Main />
       <CommPage />
       <Inter  />
+      < Economy />
     </div>
   );
 }
