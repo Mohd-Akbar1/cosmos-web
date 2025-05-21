@@ -1,34 +1,33 @@
 @import "tailwindcss";
 
-@plugin "daisyui";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Ensure full height and no margin/padding */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative; /* Needed for stacking context */
+  background-color: black; /* Fallback background color */
 }
 
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Body base styles */
 body {
-  background: black;
-  color: var(--foreground);
+  color: white; /* Ensures visibility on dark galaxy background */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  
+  z-index: 0; /* Default stacking context */
 }
 
-.font2{
+/* Custom font classes */
+.font2 {
   font-family: 'mulish';
 }
 
-.fontstyle{  
+.fontstyle {
   font-family: roboto;
-  
-  
+}
+
+/* Optional helper class to place content above background */
+.above-background {
+  position: relative;
+  z-index: 10;
 }

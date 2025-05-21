@@ -13,7 +13,7 @@ const Inter = () => {
         <div className='lg:w-1/2 '>
                 <p className='text-sm font-thin text-white/40'>Enter the cosmos hub</p>
                   <div>
-                        <p className='text-4xl font-bold'>The Heart of the Interchain.</p>
+                        <p className='text-4xl font-bold text-white/80'>The Heart of the Interchain.</p>
                         <p className='pl-3 mt-2 text-white/40'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, expedita soluta sit, praesentium deserunt voluptates
                           minima saepe vitae ullam, odio tenetur voluptatem numquam vero. Laudantium amet cumque harum delectus aliquid!</p>
                   </div>

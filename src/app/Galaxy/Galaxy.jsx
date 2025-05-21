@@ -1,15 +1,18 @@
-// components/GalaxyBackground.jsx
 'use client';
 
 import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
+import { TextureLoader } from 'three';
 
 const Galaxy = () => {
   const ref = useRef();
 
+  // Load a small round star texture
+   const starTexture = useLoader(TextureLoader, '/star.png'); // You'll add this file below 👇
+
   const { positions, colors } = useMemo(() => {
-    const starCount = 2000;
+    const starCount = 100;
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
 
@@ -39,20 +42,29 @@ const Galaxy = () => {
 
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.y += 0.0006;
+      ref.current.rotation.y += 0.0005;
     }
   });
 
   return (
     <points ref={ref} geometry={geometry}>
-      <pointsMaterial size={0.7} vertexColors />
+      <pointsMaterial
+        size={1.5}
+        map={starTexture}
+        transparent={true}
+        alphaTest={0.1}
+        vertexColors={true}
+        sizeAttenuation={true}
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+      />
     </points>
   );
 };
 
 const GalaxyBackground = () => {
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="fixed inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 50], fov: 75 }}>
         <ambientLight />
         <Galaxy />

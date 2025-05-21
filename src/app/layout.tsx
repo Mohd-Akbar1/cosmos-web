@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GalaxyBackground from "./Galaxy/Galaxy";
+import ClientOnly from "./ClientOnly";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      <body style={{ margin: 0, height: '100vh', position: 'relative' }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+          <ClientOnly>
+          <GalaxyBackground />
+        </ClientOnly>
+        <div style={{ position: 'relative', zIndex: -999, color: 'white' }}>
+          {children}
+        </div>
       </body>
     </html>
   );
